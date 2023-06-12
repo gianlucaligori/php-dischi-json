@@ -42,18 +42,21 @@ createApp({
         // },
       ],
 
-      methods: {
-        requestAlbums() {
-          axios
-            .get("http://localhost:8888/php-dischi-json/server.php")
-            .then(response => (this.albums = response.data));
-            conso
-        },
-      },
-    
-      created() {
-        this.requestAlbums();
-      },
+      
     };
+
+    
+  },
+
+  methods: {
+    requestAlbums() {
+      axios
+        .get("server.php")
+        .then(response => (this.albums = response.data));
+    },
+  },
+
+  created() {
+    this.requestAlbums();
   },
 }).mount("#app");
