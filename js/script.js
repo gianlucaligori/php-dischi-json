@@ -4,48 +4,56 @@ createApp({
   data() {
     return {
       albums: [
-        {
-          img: "img/NewJersey.jpg",
-          title: "New Jersey",
-          author: "Bon jovi",
-          year: "1988",
-        },
-
-        {
-          img: "img/LiveatWembley.jpg",
-          title: "Live at Wembley 86",
-          author: "Queen",
-          year: "1992",
-        },
-
-        {
-          img: "img/Summoner.jpg",
-          title: "Ten's Summoner's Tales",
-          author: "Sting",
-          year: "1993",
-        },
-
-        {
-          img: "img/Stevegaddband.jpg",
-          title: "Steve Gadd band",
-          author: "Steve Gadd Band",
-          year: "2018",
-        },
-
-        {
-          img: "img/bravenewworld.jpg",
-          title: "Brave new world",
-          author: "Iron Maiden",
-          year: "2000",
-        },
-
-        {
-          img: "img/Onemorecar.jpg",
-          title: "One more car, one more rider",
-          author: "Eric Clapton",
-          year: "2002",
-        },
+        // {
+        //   img: "img/NewJersey.jpg",
+        //   name_song: "New Jersey",
+        //   artist: "Bon jovi",
+        //   data: "1988",
+        // },
+        // {
+        //   img: "img/LiveatWembley.jpg",
+        //   name_song: "Live at Wembley 86",
+        //   artist: "Queen",
+        //   data: "1992",
+        // },
+        // {
+        //   img: "img/Summoner.jpg",
+        //   name_song: "Ten's Summoner's Tales",
+        //   artist: "Sting",
+        //   data: "1993",
+        // },
+        // {
+        //   img: "img/Stevegaddband.jpg",
+        //   name_song: "Steve Gadd band",
+        //   artist: "Steve Gadd Band",
+        //   data: "2018",
+        // },
+        // {
+        //   img: "img/bravenewworld.jpg",
+        //   name_song: "Brave new world",
+        //   artist: "Iron Maiden",
+        //   data: "2000",
+        // },
+        // {
+        //   img: "img/Onemorecar.jpg",
+        //   name_song: "One more car, one more rider",
+        //   artist: "Eric Clapton",
+        //   data: "2002",
+        // },
       ],
+
+      methods: {
+        requestAlbums() {
+          axios
+            .get("http://localhost:8888/php-dischi-json/server.php")
+            .then(response => (this.albums = response.data));
+            conso
+        },
+      },
+    
+      created() {
+        this.requestAlbums();
+      },
     };
   },
 }).mount("#app");
